@@ -3,6 +3,8 @@ from binance_f.impl.restapirequestimpl import RestApiRequestImpl
 from binance_f.impl.restapiinvoker import call_sync
 from binance_f.model.constant import *
 
+import logging
+
 
 class RequestClient(object):
 

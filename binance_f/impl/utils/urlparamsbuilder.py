@@ -1,5 +1,6 @@
 import json
 import urllib.parse
+import logging
 
 
 class UrlParamsBuilder(object):
@@ -13,7 +14,10 @@ class UrlParamsBuilder(object):
             if isinstance(value, list):
                 self.param_map[name] = json.dumps(value)
             elif isinstance(value, float):
-                self.param_map[name] = ('%.20f' % (value))[slice(0, 16)].rstrip('0').rstrip('.')
+                logging.debug(f'float value in UrlParamsBuilder: {value}')
+                #v = ('%.20f' % (value))[slice(0, 16)].rstrip('0').rstrip('.')
+                self.param_map[name] = value
+                #logging.debug(f'manipulated value: {v}')
             else:
                 self.param_map[name] = str(value)
     def put_post(self, name, value):
